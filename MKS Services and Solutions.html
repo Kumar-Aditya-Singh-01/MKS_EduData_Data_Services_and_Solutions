@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MKS Services and Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0c111b; --panel:#141b2a; --line:#243049; --text:#e8edf7; --muted:#97a3bb;
+  --accent:#7d8cff; --warm:#ffb454;
+  --head:"Space Grotesk",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--warm);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font:700 20px var(--head);text-decoration:none;letter-spacing:.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:24px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--text)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:72px 0 96px}
+h1{font:700 clamp(36px,5.6vw,62px)/1.05 var(--head);margin:0 0 22px;letter-spacing:-.02em}
+h2{font:700 clamp(28px,3.6vw,40px)/1.15 var(--head);margin:0 0 14px;letter-spacing:-.01em}
+h3{font:500 21px var(--head);margin:0 0 8px}
+.lead{color:var(--muted);font-size:19px;max-width:52ch;margin:0 0 32px}
+.btn{display:inline-block;padding:13px 24px;border-radius:8px;background:var(--accent);color:#0c111b;font:500 16px var(--body);text-decoration:none;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);margin-left:10px}
+.btn:hover{filter:brightness(1.1)}
+/* hero visual: messy data becoming a dashboard */
+.flow{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+.flow small{color:var(--muted);font-size:14px}
+.rows{display:grid;gap:5px;margin:12px 0 18px}
+.rows i{display:block;height:9px;border-radius:3px;background:var(--line);animation:clean 1s ease-out .6s both}
+.rows i:nth-child(odd){width:92%}.rows i:nth-child(even){width:68%}
+.rows i:nth-child(3n){width:80%}
+@keyframes clean{from{width:100%;background:#5a3b4a}to{}}
+.bars{display:flex;align-items:flex-end;gap:10px;height:130px;margin-top:12px}
+.bars b{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(var(--accent),#4a57c9);transform-origin:bottom;animation:grow .9s cubic-bezier(.2,.8,.2,1) 1.4s both}
+.bars b:nth-child(3){background:linear-gradient(var(--warm),#d98a1f)}
+.bars b:nth-child(2){animation-delay:1.5s}.bars b:nth-child(3){animation-delay:1.6s}
+.bars b:nth-child(4){animation-delay:1.7s}.bars b:nth-child(5){animation-delay:1.8s}.bars b:nth-child(6){animation-delay:1.9s}
+@keyframes grow{from{transform:scaleY(0)}}
+.tag{display:flex;justify-content:space-between;margin-top:14px;color:var(--muted);font-size:14px}
+section{padding:80px 0;border-top:1px solid var(--line)}
+.sub{color:var(--muted);max-width:60ch;margin:0 0 40px}
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.svc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:28px}
+.svc p{margin:0;color:var(--muted)}
+.cases{display:grid;gap:20px}
+.case{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--line)}
+.case:first-child{padding-top:0}
+.case .meta{color:var(--warm);font:500 15px var(--head)}
+.case .res{color:var(--muted);margin:6px 0 0}
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:48px}
+.about p{color:var(--muted);margin:0 0 16px}
+.facts{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px;display:grid;gap:18px;align-content:start}
+.facts strong{display:block;font:700 28px var(--head);color:var(--accent)}
+.facts span{color:var(--muted);font-size:15px}
+form{display:grid;gap:16px;max-width:560px}
+label{display:grid;gap:6px;font-size:15px;color:var(--muted)}
+input,textarea{font:inherit;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+textarea{min-height:130px;resize:vertical}
+.direct{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 36px}
+.direct a{display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 24px;text-decoration:none;font:500 20px var(--head);overflow-wrap:anywhere}
+.direct a:hover{border-color:var(--accent)}
+.direct span{display:block;color:var(--warm);font:400 14px var(--body);margin-bottom:2px}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.person{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px}
+.av{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:1px solid var(--accent);color:var(--accent);font:700 18px var(--head);margin-bottom:16px}
+.role{color:var(--warm);font:500 15px var(--head);margin-bottom:4px}
+.person p{margin:0;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:15px}
+@media(max-width:820px){
+  .hero,.about{grid-template-columns:1fr}.services{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr;gap:6px}.hero{padding-top:36px}.team{grid-template-columns:1fr}
+  nav{gap:16px}
+}
+@media(prefers-reduced-motion:reduce){.rows i,.bars b{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="logo" href="#top">MKS<span>.</span></a>
+  <nav aria-label="Main"><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><a href="#team">Team</a><a href="#contact">Contact</a></nav>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div>
+    <h1>Your data, organised, understood and running on its own.</h1>
+    <p class="lead">MKS Services and Solutions turns scattered spreadsheets and manual routines into clean data, clear dashboards and automated workflows.</p>
+    <a class="btn" href="#contact">Start a project</a><a class="btn ghost" href="#work">See our work</a>
+  </div>
+  <div class="flow" role="img" aria-label="Illustration: messy data rows are cleaned and become a bar chart">
+    <small>Raw data, cleaned</small>
+    <div class="rows"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <small>Dashboard, ready</small>
+    <div class="bars"><b style="height:38%"></b><b style="height:55%"></b><b style="height:92%"></b><b style="height:64%"></b><b style="height:78%"></b><b style="height:100%"></b></div>
+    <div class="tag"><span>Jan</span><span>Jun</span></div>
+  </div>
+</div>
+
+<section id="services">
+  <h2>What we do</h2>
+  <p class="sub">Four services that work alone or together, from the first data cleanup to a fully automated process.</p>
+  <div class="services">
+    <div class="svc"><h3>Data management</h3><p>Collect, clean and structure your data in one reliable place, so every report starts from numbers you can trust.</p></div>
+    <div class="svc"><h3>Data analytics</h3><p>Find trends, gaps and savings in your data, and get answers you can act on instead of raw tables.</p></div>
+    <div class="svc"><h3>Data visualization</h3><p>Interactive dashboards and clear reports that let your team see performance at a glance.</p></div>
+    <div class="svc"><h3>Excel and workflow automation</h3><p>Replace repeated manual work with automated spreadsheets, scheduled reports and connected processes.</p></div>
+  </div>
+</section>
+
+<section id="work">
+  <h2>Selected work</h2>
+  <p class="sub">Real projects, from dashboards on millions of records to automation that gives teams their time back.</p>
+  <div class="cases">
+    <article class="case"><div class="meta">Customer service · Analytics</div><div><h3>Complaints analytics dashboards</h3><p class="res">Extracted and analysed 10M+ complaint records with SQL, then built three Power BI dashboards (Complaint Summary, Age Matrix, Month Matrix) refreshed daily. Result: leadership tracks complaint trends, ageing and monthly KPIs in near real time.</p></div></article>
+    <article class="case"><div class="meta">Sales · Business intelligence</div><div><h3>Sales performance dashboard</h3><p class="res">Built KPI dashboards on 50,000+ records using SQL, Power BI and Excel, refreshed daily. Result: trend analysis revealed an 18% regional revenue gap that guided strategic decisions.</p></div></article>
+    <article class="case"><div class="meta">Operations · Excel automation</div><div><h3>VBA data merger and reporting automation</h3><p class="res">Built a VBA tool that merges many Excel files into one analysis-ready dataset, and automated consolidation with SQL and Power Query. Result: manual reporting effort reduced by up to 70%.</p></div></article>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about">
+    <div>
+      <h2>About MKS</h2>
+      <p>MKS Services and Solutions helps businesses get real value from their data. We combine data management, analytics, visualization and automation, so you do not need separate vendors for each step.</p>
+      <p>We start by understanding how your team works today, then build the simplest solution that saves time and gives you clear numbers.</p>
+    </div>
+    <div class="facts">
+      <div><strong>10M+</strong><span>Records analysed in a single project</span></div>
+      <div><strong>70%</strong><span>Less manual reporting effort</span></div>
+      <div><strong>18%</strong><span>Regional revenue gap uncovered</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <h2>Meet the team</h2>
+  <p class="sub">Three founders covering delivery, client relationships and day-to-day operations.</p>
+  <div class="team">
+    <div class="person"><div class="av" aria-hidden="true">MJ</div><h3>Manav Kumar Jha</h3><div class="role">Co-founder</div><p>Head of Finance and Client Management</p></div>
+    <div class="person"><div class="av" aria-hidden="true">KS</div><h3>Kumar Aditya Singh</h3><div class="role">Founder</div><p>Head of Development and Services</p></div>
+    <div class="person"><div class="av" aria-hidden="true">ST</div><h3>Sanvi Thakur</h3><div class="role">Co-founder</div><p>Head of HR, Operations and Admin</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Tell us what you need</h2>
+  <p class="sub">Reach us directly or send a message below and we will reply with next steps.</p>
+  <div class="direct">
+    <a href="mailto:kumaradityasingh101@gmail.com"><span>Email</span>kumaradityasingh101@gmail.com</a>
+    <a href="tel:+917493979101"><span>Phone</span>+91 74939 79101</a>
+  </div>
+  <form id="f">
+    <label>Name<input name="name" required autocomplete="name"></label>
+    <label>Email<input name="email" type="email" required autocomplete="email"></label>
+    <label>What do you want to improve?<textarea name="msg" required></textarea></label>
+    <button class="btn" type="submit">Send message</button>
+  </form>
+</section>
+</main>
+
+<footer>© 2026 MKS Services and Solutions · kumaradityasingh101@gmail.com · +91 74939 79101 · Delhi, India</footer>
+</div>
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  var d=new FormData(e.target);
+  var body='Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\n\n'+d.get('msg');
+  location.href='mailto:kumaradityasingh101@gmail.com?subject='+encodeURIComponent('New enquiry from '+d.get('name'))+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>
