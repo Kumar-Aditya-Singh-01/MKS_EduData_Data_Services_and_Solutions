@@ -40,7 +40,7 @@ h1{font-size:clamp(42px,5.1vw,65px);line-height:1.08;letter-spacing:-2.8px;color
 .stat-row>div{background:var(--navy);border-radius:10px;padding:22px 24px;color:#fff}
 .stat-row b{display:block;font:800 38px/1.1 Manrope;color:var(--teal2)}
 .stat-row small{font-size:12px;color:#b4c4d1}
-.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
 .work-card{border:1px solid var(--line);border-radius:10px;padding:24px 22px;background:linear-gradient(150deg,#fff,#f8fbfc);display:flex;flex-direction:column;transition:.2s}
 .work-card:hover{border-color:#c8e7e4;box-shadow:0 15px 35px rgba(16,43,73,.07)}
 .work-tag{font-size:10px;font-weight:700;color:var(--teal)}
@@ -63,3 +63,9 @@ h1{font-size:clamp(42px,5.1vw,65px);line-height:1.08;letter-spacing:-2.8px;color
 .nav-links a:focus-visible,.button:focus-visible,.menu-toggle:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
 @media(max-width:900px){.work-grid,.team-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.stat-row,.work-grid,.team-grid{grid-template-columns:1fr}.contact-list li{grid-template-columns:60px 1fr;word-break:break-word}}
+
+.work-kpis{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 12px}
+.work-kpis span{font-size:10px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:4px 9px;background:#fff}
+.work-link{margin-left:auto;font-size:12px;font-weight:700;color:var(--teal);align-self:center}.work-link:hover{color:var(--navy)}
+.work-disclaimer{font-size:11px;color:var(--muted);margin:18px 0 0}
+@media(max-width:700px){.work-grid{grid-template-columns:1fr}}

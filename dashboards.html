@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample Dashboards | MKS EduData</title>
+<meta name="description" content="Four interactive sample dashboards by MKS EduData, built on fictional data: school overview, coaching centre, fee collection and academic results.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.page{padding:48px 0 80px;background:var(--pale);min-height:80vh}
+.page h1{font-size:clamp(30px,4vw,44px);letter-spacing:-1.5px;margin:0 0 8px}
+.lead{color:var(--muted);font-size:14px;max-width:640px;margin:0}
+.note{display:inline-block;margin-top:14px;font-size:11px;font-weight:700;color:var(--teal);background:#e2f5f3;padding:6px 11px;border-radius:6px}
+.tabs{display:flex;gap:8px;margin:28px 0 18px;flex-wrap:wrap}
+.tab{border:1px solid #d7e2e9;background:#fff;color:var(--navy);font:700 13px "DM Sans",sans-serif;padding:11px 18px;border-radius:7px;cursor:pointer}
+.tab[aria-selected=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.dash{display:none}.dash.on{display:block}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi small{font-size:11px;font-weight:700;color:var(--muted)}
+.kpi b{display:block;font:800 28px Manrope;color:var(--navy);margin:2px 0}
+.kpi span{font-size:11px;font-weight:700;color:var(--teal)}.kpi span.warn{color:#c2570c}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.card h3{font-size:14px;color:var(--navy);margin:0 0 2px}.card>p{font-size:11px;color:var(--muted);margin:0 0 12px}
+.card svg{width:100%;height:auto;display:block}
+.hb{display:grid;grid-template-columns:90px 1fr 54px;gap:10px;align-items:center;font-size:12px;margin:7px 0;color:var(--ink)}
+.hb i{display:block;height:10px;border-radius:5px;background:#eaf0f4;position:relative}
+.hb i u{position:absolute;inset:0 auto 0 0;border-radius:5px;background:var(--teal)}
+.hb.flag i u{background:#e0873a}.hb b{text-align:right;color:var(--navy)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:8px}
+.legend span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--c);margin-right:5px}
+.donut{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.donut svg{width:150px;flex:none}
+table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}th{font-size:11px;color:var(--muted)}td:not(:first-child),th:not(:first-child){text-align:right}
+.q{margin-top:12px;font-size:12px;color:var(--navy);background:#fff;border-left:3px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0}
+.wide{grid-column:1/-1}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.hb{grid-template-columns:76px 1fr 48px}}
+</style>
+</head>
+<body>
+<header class="site-header"><nav class="nav container" aria-label="Main navigation">
+<a class="brand" href="index.html"><img src="assets/mks-edudata-logo.png" alt="MKS EduData logo" onerror="this.style.display='none'"><span class="brand-fallback"><b>MKS</b><strong>EduData</strong><small>DATA SERVICES &amp; SOLUTIONS</small></span></a>
+<div class="nav-links" style="display:flex"><a href="index.html">Back to website</a><a class="nav-cta" href="index.html#contact">Request a demo <span>↗</span></a></div>
+</nav></header>
+<main class="page"><div class="container">
+<h1>Sample dashboards</h1>
+<p class="lead">Four demonstration dashboards showing the kind of reporting we build. Each one answers a specific management question.</p>
+<span class="note">All figures are fictional sample data, not client results.</span>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" aria-selected="true" data-t="school">School management overview</button>
+<button class="tab" role="tab" aria-selected="false" data-t="coach">Coaching centre performance</button>
+<button class="tab" role="tab" aria-selected="false" data-t="fees">Fee collection</button>
+<button class="tab" role="tab" aria-selected="false" data-t="results">Academic results</button>
+</div>
+
+<section class="dash on" id="school">
+<div class="kpis">
+<div class="kpi"><small>Enrolled students</small><b>1,248</b><span>+6.2% vs last year</span></div>
+<div class="kpi"><small>Attendance rate</small><b>92.4%</b><span>+0.9 pts vs last month</span></div>
+<div class="kpi"><small>Average exam score</small><b>71.8</b><span>+2.1 vs last term</span></div>
+<div class="kpi"><small>Fees collected</small><b>86.8%</b><span class="warn">3 classes below target</span></div>
+</div>
+<div class="grid">
+<div class="card"><h3>Monthly attendance rate</h3><p>Percentage of students present</p><div id="s1"></div></div>
+<div class="card"><h3>Class-wise attendance</h3><p>Orange means below the 90% follow-up threshold</p><div id="s2"></div></div>
+<div class="card"><h3>Average score by subject</h3><p>Latest term examination</p><div id="s3"></div></div>
+<div class="card"><h3>Fees: expected vs collected</h3><p>In ₹ lakh, by month</p><div id="s4"></div></div>
+</div>
+<div class="q"><b>Management question:</b> which classes need attendance or academic follow-up? Here, Classes 6B and 9A sit below 90% attendance.</div>
+</section>
+
+<section class="dash" id="coach">
+<div class="kpis">
+<div class="kpi"><small>New enquiries</small><b>842</b><span>+11% vs last quarter</span></div>
+<div class="kpi"><small>Admissions</small><b>276</b><span>+9% vs last quarter</span></div>
+<div class="kpi"><small>Conversion</small><b>32.8%</b><span>enquiry to admission</span></div>
+<div class="kpi"><small>Monthly collection</small><b>₹18.4L</b><span class="warn">₹3.2L pending</span></div>
+</div>
+<div class="grid">
+<div class="card"><h3>Admission funnel</h3><p>Where enquiries drop off</p><div id="c1"></div></div>
+<div class="card"><h3>Admissions by lead source</h3><p>Share of admitted students</p><div id="c2"></div></div>
+<div class="card"><h3>Admissions by course</h3><p>Current batch cycle</p><div id="c3"></div></div>
+<div class="card"><h3>Monthly collections</h3><p>In ₹ lakh, collected vs pending</p><div id="c4"></div></div>
+<div class="card wide"><h3>Counsellor summary</h3><p>Enquiries handled and conversion</p><div id="c5"></div></div>
+</div>
+<div class="q"><b>Management question:</b> which enquiry sources and courses contribute to admissions? Referrals and walk-ins bring most admissions, and JEE is the strongest course.</div>
+</section>
+
+<section class="dash" id="fees">
+<div class="kpis">
+<div class="kpi"><small>Expected to date</small><b>₹1.52 Cr</b><span>academic year</span></div>
+<div class="kpi"><small>Collected</small><b>₹1.32 Cr</b><span>86.8% collection rate</span></div>
+<div class="kpi"><small>Pending dues</small><b>₹20.0L</b><span class="warn">₹6.4L overdue 60+ days</span></div>
+<div class="kpi"><small>Online payments</small><b>67%</b><span>UPI, bank and card</span></div>
+</div>
+<div class="grid">
+<div class="card"><h3>Collection rate by class</h3><p>Orange means below the 85% target</p><div id="f1"></div></div>
+<div class="card"><h3>Pending dues by age</h3><p>In ₹ lakh, days since due date</p><div id="f2"></div></div>
+<div class="card"><h3>Payment mode</h3><p>Share of fees collected</p><div id="f3"></div></div>
+<div class="card"><h3>Monthly collection rate</h3><p>Collected as a percentage of expected</p><div id="f4"></div></div>
+</div>
+<div class="q"><b>Management question:</b> which classes have the most pending dues and need reminders? Classes 6B, 8A and 9A are below target.</div>
+</section>
+
+<section class="dash" id="results">
+<div class="kpis">
+<div class="kpi"><small>Average score</small><b>71.8</b><span>+2.1 vs last term</span></div>
+<div class="kpi"><small>Pass rate</small><b>94.6%</b><span>+1.3 pts vs last term</span></div>
+<div class="kpi"><small>Grade A and above</small><b>38%</b><span>of students</span></div>
+<div class="kpi"><small>Need extra support</small><b>62</b><span class="warn">students below 40</span></div>
+</div>
+<div class="grid">
+<div class="card"><h3>Pass rate by subject</h3><p>Percentage of students passing</p><div id="r1"></div></div>
+<div class="card"><h3>Grade distribution</h3><p>Percentage of students per grade</p><div id="r2"></div></div>
+<div class="card"><h3>Average score by class</h3><p>Orange means below 70</p><div id="r3"></div></div>
+<div class="card"><h3>Exam-by-exam trend</h3><p>School average score</p><div id="r4"></div></div>
+</div>
+<div class="q"><b>Management question:</b> which classes and subjects need academic support? Classes 6B and 9A average below 70, and Math has the lowest pass rate.</div>
+</section>
+</div></main>
+
+<footer class="footer"><div class="container footer-bottom"><span>© <span id="year"></span> MKS EduData. Sample data is fictional.</span><span><a href="mailto:kumaradityasingh101@gmail.com">kumaradityasingh101@gmail.com</a> · +91 74939 79101</span></div></footer>
+
+<script>
+const T='#16a6a1',N='#102b49',O='#e0873a';
+const $=id=>document.getElementById(id);
+function cols(id,labels,series,max){
+  const W=420,H=190,p=28,n=labels.length,g=(W-p)/n,k=series.length,bw=Math.min(26,(g-8)/k);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img">`;
+  for(let i=0;i<=3;i++){const y=10+(H-45)*i/3;s+=`<line x1="${p}" x2="${W}" y1="${y}" y2="${y}" stroke="#edf1f4"/><text x="0" y="${y+3}" font-size="9" fill="#9aa7b2">${Math.round(max*(1-i/3))}</text>`}
+  labels.forEach((l,i)=>{series.forEach((se,j)=>{const v=se.v[i],h=(H-45)*v/max,x=p+g*i+(g-bw*k)/2+bw*j,y=H-35-h;
+    s+=`<rect x="${x}" y="${y}" width="${bw-2}" height="${h}" rx="3" fill="${se.c}"><title>${l}, ${se.n}: ${v}</title></rect>`;
+    if(k==1)s+=`<text x="${x+bw/2-1}" y="${y-4}" font-size="9" text-anchor="middle" fill="${N}">${v}</text>`});
+    s+=`<text x="${p+g*i+g/2}" y="${H-18}" font-size="9" text-anchor="middle" fill="#7b8a99">${l}</text>`});
+  $(id).innerHTML=s+'</svg>'+(k>1?'<div class="legend">'+series.map(x=>`<span style="--c:${x.c}">${x.n}</span>`).join('')+'</div>':'');
+}
+function line(id,labels,v,min,max,u='%'){
+  const W=420,H=190,p=34,st=(W-p-10)/(v.length-1),y=x=>H-30-(H-50)*(x-min)/(max-min);
+  let pts=v.map((x,i)=>[p+st*i,y(x)]),s=`<svg viewBox="0 0 ${W} ${H}" role="img">`;
+  for(let i=0;i<=3;i++){const val=max-(max-min)*i/3,yy=y(val);s+=`<line x1="${p}" x2="${W}" y1="${yy}" y2="${yy}" stroke="#edf1f4"/><text x="0" y="${yy+3}" font-size="9" fill="#9aa7b2">${val.toFixed(0)}${u}</text>`}
+  s+=`<path d="M${pts.map(q=>q.join(' ')).join(' L')} L${pts.at(-1)[0]} ${H-30} L${p} ${H-30}Z" fill="${T}" opacity=".12"/><path d="M${pts.map(q=>q.join(' ')).join(' L')}" fill="none" stroke="${T}" stroke-width="3" stroke-linejoin="round"/>`;
+  pts.forEach((q,i)=>s+=`<circle cx="${q[0]}" cy="${q[1]}" r="4" fill="${T}"><title>${labels[i]}: ${v[i]}${u}</title></circle><text x="${q[0]}" y="${H-12}" font-size="9" text-anchor="middle" fill="#7b8a99">${labels[i]}</text><text x="${q[0]}" y="${q[1]-9}" font-size="9" text-anchor="middle" fill="${N}">${v[i]}</text>`);
+  $(id).innerHTML=s+'</svg>';
+}
+function hb(id,rows,max,fmt=v=>v,flagBelow=-1){
+  $(id).innerHTML=rows.map(([l,v])=>`<div class="hb${v<flagBelow?' flag':''}"><span>${l}</span><i><u style="width:${100*v/max}%"></u></i><b>${fmt(v)}</b></div>`).join('');
+}
+function donut(id,rows){
+  const cs=[N,T,'#35c4bb','#7fa6c4','#c3d3df'];let off=0,s='<svg viewBox="0 0 42 42" role="img"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#eef2f5" stroke-width="6"/>';
+  rows.forEach(([l,v],i)=>{s+=`<circle cx="21" cy="21" r="15.9155" fill="none" stroke="${cs[i]}" stroke-width="6" stroke-dasharray="${v} ${100-v}" stroke-dashoffset="${25-off}"><title>${l}: ${v}%</title></circle>`;off+=v});
+  $(id).innerHTML='<div class="donut">'+s+'</svg><div>'+rows.map(([l,v],i)=>`<div class="hb" style="grid-template-columns:12px auto 40px"><i style="height:10px;width:10px;background:${cs[i]}"></i><span>${l}</span><b>${v}%</b></div>`).join('')+'</div></div>';
+}
+line('s1',['Jan','Feb','Mar','Apr','May','Jun'],[90.1,91.2,92.0,91.5,92.8,92.4],88,94);
+hb('s2',[['Class 6A',94.1],['Class 6B',88.2],['Class 7A',93.0],['Class 8A',92.5],['Class 9A',87.6],['Class 10A',95.3]],100,v=>v+'%',90);
+cols('s3',['Math','Science','English','Hindi','Social'],[{n:'Avg score',v:[68,72,76,74,70],c:T}],100);
+cols('s4',['Jan','Feb','Mar','Apr','May','Jun'],[{n:'Expected',v:[24,24,25,26,26,27],c:'#c3d3df'},{n:'Collected',v:[21,22,22,23,23,24],c:T}],30);
+hb('c1',[['Enquiries',842],['Contacted',690],['Demo attended',410],['Admitted',276]],842);
+donut('c2',[['Referral',31],['Walk-in',27],['Instagram',20],['Google search',14],['Pamphlets',8]]);
+hb('c3',[['JEE',96],['NEET',78],['Foundation',62],['Board prep',40]],100);
+cols('c4',['Jan','Feb','Mar','Apr','May','Jun'],[{n:'Collected',v:[16.2,17.1,17.8,18.0,18.4,18.4],c:T},{n:'Pending',v:[4.1,3.9,3.6,3.4,3.3,3.2],c:O}],20);
+
+hb('f1',[['Class 6A',91],['Class 6B',82],['Class 7A',89],['Class 8A',83],['Class 9A',80],['Class 10A',93]],100,v=>v+'%',85);
+cols('f2',['0-30','31-60','61-90','90+'],[{n:'Pending (₹ lakh)',v:[8.2,5.4,3.6,2.8],c:O}],10);
+donut('f3',[['UPI',42],['Cash',23],['Bank transfer',20],['Cheque',10],['Card',5]]);
+line('f4',['Jan','Feb','Mar','Apr','May','Jun'],[84.2,85.0,86.1,85.7,86.9,86.8],82,88);
+cols('r1',['Math','Science','English','Hindi','Social'],[{n:'Pass %',v:[91,94,97,96,95],c:T}],100);
+cols('r2',['A+','A','B','C','D'],[{n:'% of students',v:[12,26,31,21,10],c:N}],40);
+hb('r3',[['Class 6A',74],['Class 6B',66],['Class 7A',72],['Class 8A',70],['Class 9A',68],['Class 10A',77]],100,v=>v,70);
+line('r4',['Unit 1','Unit 2','Mid-term','Unit 3','Pre-final'],[66.5,68.9,70.2,71.0,71.8],64,74,'');
+$('c5').innerHTML='<table><tr><th>Counsellor</th><th>Enquiries</th><th>Admissions</th><th>Conversion</th></tr>'+[['Counsellor A',248,91],['Counsellor B',226,78],['Counsellor C',204,64],['Counsellor D',164,43]].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><b>${(100*r[2]/r[1]).toFixed(1)}%</b></td></tr>`).join('')+'</table>';
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));
+  document.querySelectorAll('.dash').forEach(d=>d.classList.toggle('on',d.id===b.dataset.t));
+  history.replaceState(null,'','#'+b.dataset.t);
+});
+{const tb=document.querySelector('[data-t="'+location.hash.slice(1)+'"]');if(tb)tb.click();}
+$('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
